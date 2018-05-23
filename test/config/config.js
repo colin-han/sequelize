@@ -68,16 +68,13 @@ module.exports = {
   oracle: {
     database: process.env.SEQ_ORACLE_DB   || process.env.SEQ_DB   || 'sequelize',
     username: process.env.SEQ_ORACLE_USER || process.env.SEQ_USER || 'sequelize',
-    password: process.env.SEQ_ORACLE_PW   || process.env.SEQ_PW   || 'nEGkLma26gXVHFUAHJxcmsrK',
+    password: process.env.SEQ_ORACLE_PW   || process.env.SEQ_PW   || 'sequelize',
     host:     process.env.SEQ_ORACLE_HOST || process.env.SEQ_HOST || '127.0.0.1',
     port:     process.env.SEQ_ORACLE_PORT || process.env.SEQ_PORT || 1521,
     dialectOptions: {
       // big insert queries need a while
-      requestTimeout: 60000
+      requestTimeout: 60000,
+      sid: process.env.SEQ_ORACLE_SID || 'XE',
     },
-    pool:     {
-      max: process.env.SEQ_MSSQL_POOL_MAX  || process.env.SEQ_POOL_MAX  || 5,
-      idle: process.env.SEQ_MSSQL_POOL_IDLE || process.env.SEQ_POOL_IDLE || 3000
-    }
   }
 };
